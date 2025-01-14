@@ -19,19 +19,35 @@ class _AdminpageState extends State<Adminpage> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Container(
-                margin: EdgeInsets.only(left: 20, top: 40),
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.grey),
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 20, top: 40),
+                    height: 70,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
+                      "ADMIN",
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                  ),
+                ],
               ),
               PopupMenuButton<String>(
                 iconColor: Colors.white,
-                iconSize: 35,
+                iconSize: 33,
                 color: Colors.white,
                 onSelected: (String value) {
                   print('Selected: $value');
@@ -144,7 +160,37 @@ class _AdminpageState extends State<Adminpage> {
                   }).toList();
                 },
               )
-            ])
+            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 15, top: 30),
+                  height: 60,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color.fromARGB(255, 133, 131, 131),
+                  ),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Result",
+                        style: TextStyle(color: Colors.white, fontSize: 17),
+                      )),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 15),
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      )),
+                )
+              ],
+            )
           ],
         ));
   }

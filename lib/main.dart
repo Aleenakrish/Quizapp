@@ -16,6 +16,7 @@ void main() async {
     routes: {
       "loginpage": (context) => Loginpage(),
       "registerpage": (context) => Registerpage(),
+      "adminpage": (context) => Adminpage()
     },
   ));
 }
