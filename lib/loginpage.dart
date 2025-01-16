@@ -64,12 +64,12 @@ class _LoginpageState extends State<Loginpage> {
             ),
             Container(
               padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 60),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 70),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(255, 133, 131, 131),
               ),
-              height: 60,
+              height: 63,
               width: MediaQuery.of(context).size.width,
               child: TextField(
                 controller: _email,
@@ -82,12 +82,12 @@ class _LoginpageState extends State<Loginpage> {
             ),
             Container(
               padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 30),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(255, 133, 131, 131),
               ),
-              height: 60,
+              height: 63,
               width: MediaQuery.of(context).size.width,
               child: TextField(
                 controller: _password,

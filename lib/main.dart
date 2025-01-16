@@ -8,6 +8,7 @@ import 'package:quizapp/flutterpage.dart';
 import 'package:quizapp/mernpage.dart';
 import 'package:quizapp/pythonpage.dart';
 import 'package:quizapp/registerpage.dart';
+import 'package:quizapp/resultpage.dart';
 
 import 'firebase_options.dart';
 
@@ -26,7 +27,8 @@ void main() async {
       "flutterpage": (context) => Flutterpage(),
       "pythonpage": (context) => Pythonpage(),
       "mernpage": (context) => Mernpage(),
-      "javapage": (context) => Javapage()
+      "javapage": (context) => Javapage(),
+      "resultpage": (context) => Resultpage()
     },
   ));
 }

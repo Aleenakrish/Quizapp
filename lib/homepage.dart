@@ -18,15 +18,17 @@ class _HomepageState extends State<Homepage> {
             Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 40, right: 40, top: 100),
-                  height: 90,
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 170),
+                  height: 80,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 133, 131, 131),
+                    color: Color.fromARGB(255, 53, 52, 52),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "flutterpage");
+                      },
                       child: Center(
                           child: Text(
                         "FLUTTER",
@@ -34,15 +36,17 @@ class _HomepageState extends State<Homepage> {
                       ))),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 40, right: 40, top: 40),
-                  height: 100,
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 15),
+                  height: 80,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 133, 131, 131),
+                    color: Color.fromARGB(255, 53, 52, 52),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "pythonpage");
+                      },
                       child: Center(
                           child: Text(
                         "PYTHON",
@@ -50,15 +54,17 @@ class _HomepageState extends State<Homepage> {
                       ))),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 40, right: 40, top: 40),
-                  height: 100,
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 15),
+                  height: 80,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 133, 131, 131),
+                    color: Color.fromARGB(255, 53, 52, 52),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "mernpage");
+                      },
                       child: Center(
                           child: Text(
                         "MERN",
@@ -66,15 +72,17 @@ class _HomepageState extends State<Homepage> {
                       ))),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 40, right: 40, top: 40),
-                  height: 100,
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 15),
+                  height: 80,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 133, 131, 131),
+                    color: Color.fromARGB(255, 53, 52, 52),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "javapage");
+                      },
                       child: Center(
                           child: Text(
                         "JAVA SCRIPT",
