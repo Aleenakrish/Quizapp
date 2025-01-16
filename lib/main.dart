@@ -23,7 +23,7 @@ void main() async {
       "homepage": (context) => Homepage(),
       "loginpage": (context) => Loginpage(),
       "registerpage": (context) => Registerpage(),
-      "adminpage": (context) => Adminpage(),
+      // "adminpage": (context) => Adminpage(),
       "flutterpage": (context) => Flutterpage(),
       "pythonpage": (context) => Pythonpage(),
       "mernpage": (context) => Mernpage(),
