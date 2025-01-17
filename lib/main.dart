@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/additem.dart';
+import 'package:quizapp/addnewitem.dart';
 import 'package:quizapp/adminpage.dart';
 import 'package:quizapp/homepage.dart';
 import 'package:quizapp/javapage.dart';
@@ -18,8 +20,10 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MaterialApp(
-    home: Adminpage(),
+    home: Loginpage(),
     routes: {
+      "additem": (context) => Additem(),
+      "addnewitem": (context) => Addnewitem(),
       "homepage": (context) => Homepage(),
       "loginpage": (context) => Loginpage(),
       "registerpage": (context) => Registerpage(),

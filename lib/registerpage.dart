@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quizapp/adminpage.dart';
+import 'package:quizapp/homepage.dart';
 import 'package:quizapp/loginpage.dart';
 
 class Registerpage extends StatefulWidget {
@@ -14,9 +17,82 @@ class _RegisterpageState extends State<Registerpage> {
   TextEditingController _password = TextEditingController();
   TextEditingController _cpassword = TextEditingController();
 
-  Future register() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _email.text.trim(), password: _password.text.trim());
+  // Future register() async {
+  //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //       email: _email.text.trim(), password: _password.text.trim());
+  // }
+  Future<void> registerUser() async {
+    try {
+      // Create user
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _email.text.trim(),
+        password: _password.text.trim(),
+      );
+
+      // Save user data in Firestore
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'username': _email.text.trim(),
+        'role': "user",
+      });
+      getUserRole();
+      checkUserRole();
+    } catch (e) {
+      print(
+          "================================================================================error");
+      print('Error registering user: $e');
+    }
+  }
+
+  Future<String?> getUserRole() async {
+    try {
+      // Get the current user
+      User? currentUser = FirebaseAuth.instance.currentUser;
+
+      if (currentUser != null) {
+        // Fetch user document from Firestore
+        DocumentSnapshot userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(currentUser.uid)
+            .get();
+
+        // Check if the role field exists
+        if (userDoc.exists && userDoc['role'] != null) {
+          return userDoc['role'] as String;
+        }
+      }
+      return null; // Role not found
+    } catch (e) {
+      print('Error fetching user role: $e');
+      return null;
+    }
+  }
+
+  void checkUserRole() async {
+    String? role = await getUserRole();
+
+    if (role == 'admin') {
+      print(
+          "================================================================================answer");
+      print('User is an admin');
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => Adminpage(),
+      ));
+    } else if (role == 'user') {
+      print(
+          "================================================================================answer");
+      print('User is a regular user');
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => Homepage(),
+      ));
+    } else {
+      print(
+          "================================================================================answer");
+      print('Role not defined or user not found');
+    }
   }
 
   @override
@@ -107,7 +183,7 @@ class _RegisterpageState extends State<Registerpage> {
               child: TextButton(
                   onPressed: () {
                     if (_password.text == _cpassword.text) {
-                      register();
+                      registerUser();
                     } else {
                       print("incorrect");
                     }
