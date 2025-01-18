@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quizapp/addnewitem.dart';
@@ -11,8 +12,13 @@ class Adminpage extends StatefulWidget {
 }
 
 class _AdminpageState extends State<Adminpage> {
+  TextEditingController eml = TextEditingController();
   TextEditingController addnewfield = TextEditingController();
   // List ls = ['flutter', 'python'];
+
+  Future resetpaswrd() async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: eml.text.trim());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +101,40 @@ class _AdminpageState extends State<Adminpage> {
                                                       ),
                                                     ),
                                                   ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                  ),
+                                                  Container(
+                                                    height: 50,
+                                                    width: 300,
+                                                    margin: EdgeInsets.only(
+                                                        left: 20, right: 20),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15),
+                                                      color: Colors.grey,
+                                                    ),
+                                                    child: Expanded(
+                                                        child: TextField(
+                                                      controller: eml,
+                                                      decoration:
+                                                          InputDecoration(
+                                                              border:
+                                                                  InputBorder
+                                                                      .none),
+                                                    )),
+                                                  ),
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        resetpaswrd();
+                                                      },
+                                                      child: Text(
+                                                        "RESET",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ))
                                                 ],
                                               ),
                                             );
@@ -106,11 +146,17 @@ class _AdminpageState extends State<Adminpage> {
                                         style: TextStyle(color: Colors.black),
                                       )),
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await FirebaseAuth.instance.signOut();
+                                        Navigator.popUntil(
+                                          context,
+                                          (route) => route.isFirst,
+                                        );
+                                      },
                                       child: Text(
-                                        "Logout",
+                                        'logout',
                                         style: TextStyle(color: Colors.black),
-                                      ))
+                                      )),
                                 ],
                               ));
                         }).toList();

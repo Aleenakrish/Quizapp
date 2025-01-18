@@ -131,187 +131,12 @@ class _AddnewitemState extends State<Addnewitem> {
                     labelStyle: TextStyle(color: Colors.white)),
               )),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 270,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 1.5, right: 1.5),
-              decoration: BoxDecoration(border: Border.all()),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    margin: EdgeInsets.only(left: 15, right: 15),
-                    height: 57,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color.fromARGB(255, 73, 72, 72),
-                    ),
-                    width: double.infinity,
-                    child: Expanded(
-                        child: TextField(
-                      cursorColor: Colors.white,
-                      style: TextStyle(color: Colors.white),
-                      controller: Question,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          labelText: "Question",
-                          labelStyle: TextStyle(color: Colors.white)),
-                    )),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 10),
-                          height: 55,
-                          width: 170,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 73, 72, 72)),
-                          child: Expanded(
-                              child: TextField(
-                            cursorColor: Colors.white,
-                            style: TextStyle(color: Colors.white),
-                            controller: Option1,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                labelStyle: TextStyle(color: Colors.white)),
-                          )),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 10),
-                          height: 55,
-                          width: 170,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 73, 72, 72)),
-                          child: Expanded(
-                              child: TextField(
-                            cursorColor: Colors.white,
-                            style: TextStyle(color: Colors.white),
-                            controller: option2,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                labelStyle: TextStyle(color: Colors.white)),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 10),
-                          height: 55,
-                          width: 170,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 73, 72, 72)),
-                          child: Expanded(
-                              child: TextField(
-                            cursorColor: Colors.white,
-                            controller: option3,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                labelStyle: TextStyle(color: Colors.white)),
-                          )),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 10),
-                          height: 55,
-                          width: 170,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 73, 72, 72)),
-                          child: Expanded(
-                              child: TextField(
-                            cursorColor: Colors.white,
-                            style: TextStyle(color: Colors.white),
-                            controller: option4,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                labelStyle: TextStyle(color: Colors.white)),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 10),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color.fromARGB(255, 73, 72, 72),
-                        ),
-                        child: Expanded(
-                            child: TextField(
-                          cursorColor: Colors.white,
-                          style: TextStyle(color: Colors.white),
-                          controller: answer,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              labelText: "Answer",
-                              labelStyle: TextStyle(color: Colors.white)),
-                        )),
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            addtoList();
-                          },
-                          child: Text(
-                            "Add",
-                            style: TextStyle(color: Colors.white),
-                          )),
-                      // CupertinoButton(
-                      //   sizeStyle: CupertinoButtonSize.small,
-                      //   color: Colors.blue,
-                      //   borderRadius: BorderRadius.circular(5),
-                      //   child: Text(
-                      //     'Add',
-                      //     style: TextStyle(color: Colors.white),
-                      //   ),
-                      //   onPressed: () {
-                      //     addtoList();
-                      //   },
-                      // ),
-                      SizedBox(
-                        width: 5,
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            
             SizedBox(
               height: 20,
             ),
             Container(
+              // color: Colors.amber,
               height: 550,
               width: double.infinity,
               child: Topic.text.isNotEmpty
@@ -331,12 +156,16 @@ class _AddnewitemState extends State<Addnewitem> {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  // "2). who developed flutter?",
-                                  "${index + 1}). ${todosnapshot["question"].toString()}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
+                                Container(
+                                  child: Text(
+                                    // "2). who developed flutter?",
+                                    ////${index }).  "${todosnapshot["question"].toString()}",
+                                    " ${index}).${todosnapshot["question"].toString()}",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 5,
@@ -362,6 +191,8 @@ class _AddnewitemState extends State<Addnewitem> {
                                                   child: Text(
                                                     todosnapshot["options"][0]
                                                         .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white),
                                                   ),
                                                 )),
                                                 SizedBox(
@@ -375,8 +206,11 @@ class _AddnewitemState extends State<Addnewitem> {
                                                       border: Border.all(
                                                           color: Colors.grey)),
                                                   child: Text(
-                                                      todosnapshot["options"][1]
-                                                          .toString()),
+                                                    todosnapshot["options"][1]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
                                                 ))
                                               ],
                                             ),
@@ -399,8 +233,11 @@ class _AddnewitemState extends State<Addnewitem> {
                                                       border: Border.all(
                                                           color: Colors.grey)),
                                                   child: Text(
-                                                      todosnapshot["options"][2]
-                                                          .toString()),
+                                                    todosnapshot["options"][2]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
                                                 )),
                                                 SizedBox(
                                                   height: 5,
@@ -413,8 +250,11 @@ class _AddnewitemState extends State<Addnewitem> {
                                                       border: Border.all(
                                                           color: Colors.grey)),
                                                   child: Text(
-                                                      todosnapshot["options"][3]
-                                                          .toString()),
+                                                    todosnapshot["options"][3]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
                                                 ))
                                               ],
                                             ),

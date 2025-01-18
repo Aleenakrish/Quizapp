@@ -21,77 +21,116 @@ class _RegisterpageState extends State<Registerpage> {
   //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
   //       email: _email.text.trim(), password: _password.text.trim());
   // }
+  // Future<void> registerUser() async {
+  //   try {
+  //     // Create user
+  //     UserCredential userCredential =
+  //         await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //       email: _email.text.trim(),
+  //       password: _password.text.trim(),
+  //     );
+
+  //     // Save user data in Firestore
+  //     await FirebaseFirestore.instance
+  //         .collection('users')
+  //         .doc(userCredential.user!.uid)
+  //         .set({
+  //       'username': _email.text.trim(),
+  //       'role': "user",
+  //     });
+  //     getUserRole();
+  //     checkUserRole();
+  //   } catch (e) {
+  //     print(
+  //         "================================================================================error");
+  //     print('Error registering user: $e');
+  //   }
+  // }
+
+  // Future<String?> getUserRole() async {
+  //   try {
+  //     // Get the current user
+  //     User? currentUser = FirebaseAuth.instance.currentUser;
+
+  //     if (currentUser != null) {
+  //       // Fetch user document from Firestore
+  //       DocumentSnapshot userDoc = await FirebaseFirestore.instance
+  //           .collection('users')
+  //           .doc(currentUser.uid)
+  //           .get();
+
+  //       // Check if the role field exists
+  //       if (userDoc.exists && userDoc['role'] != null) {
+  //         return userDoc['role'] as String;
+  //       }
+  //     }
+  //     return null; // Role not found
+  //   } catch (e) {
+  //     print('Error fetching user role: $e');
+  //     return null;
+  //   }
+  // }
+
+  // void checkUserRole() async {
+  //   String? role = await getUserRole();
+
+  //   if (role == 'admin') {
+  //     print(
+  //         "================================================================================answer");
+  //     print('User is an admin');
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (context) => Adminpage(),
+  //     ));
+  //   } else if (role == 'user') {
+  //     print(
+  //         "================================================================================answer");
+  //     print('User is a regular user');
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (context) => Homepage(),
+  //     ));
+  //   } else {
+  //     print(
+  //         "================================================================================answer");
+  //     print('Role not defined or user not found');
+  //   }
+  // }
   Future<void> registerUser() async {
-    try {
-      // Create user
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _email.text.trim(),
-        password: _password.text.trim(),
-      );
+    if (_password.text == _cpassword.text) {
+      try {
+        // Create user
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _email.text.trim(),
+          password: _password.text.trim(),
+        );
 
-      // Save user data in Firestore
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-        'username': _email.text.trim(),
-        'role': "user",
-      });
-      getUserRole();
-      checkUserRole();
-    } catch (e) {
-      print(
-          "================================================================================error");
-      print('Error registering user: $e');
-    }
-  }
-
-  Future<String?> getUserRole() async {
-    try {
-      // Get the current user
-      User? currentUser = FirebaseAuth.instance.currentUser;
-
-      if (currentUser != null) {
-        // Fetch user document from Firestore
-        DocumentSnapshot userDoc = await FirebaseFirestore.instance
+        // Save user data in Firestore
+        await FirebaseFirestore.instance
             .collection('users')
-            .doc(currentUser.uid)
-            .get();
-
-        // Check if the role field exists
-        if (userDoc.exists && userDoc['role'] != null) {
-          return userDoc['role'] as String;
-        }
+            .doc(userCredential.user!.uid)
+            .set({
+          'username': _email.text.trim(),
+          'role': "user",
+        });
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Homepage(),
+            ));
+      } catch (e) {
+        print(
+            "================================================================================error");
+        print('Error registering user: $e');
       }
-      return null; // Role not found
-    } catch (e) {
-      print('Error fetching user role: $e');
-      return null;
-    }
-  }
-
-  void checkUserRole() async {
-    String? role = await getUserRole();
-
-    if (role == 'admin') {
-      print(
-          "================================================================================answer");
-      print('User is an admin');
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => Adminpage(),
-      ));
-    } else if (role == 'user') {
-      print(
-          "================================================================================answer");
-      print('User is a regular user');
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => Homepage(),
-      ));
     } else {
-      print(
-          "================================================================================answer");
-      print('Role not defined or user not found');
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('missmatch password'),
+          );
+        },
+      );
     }
   }
 
@@ -100,6 +139,8 @@ class _RegisterpageState extends State<Registerpage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,7 +156,7 @@ class _RegisterpageState extends State<Registerpage> {
             ),
             Container(
               padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 50),
+              margin: EdgeInsets.only(left: 30, right: 20, top: 50),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(255, 133, 131, 131),
@@ -133,7 +174,7 @@ class _RegisterpageState extends State<Registerpage> {
             ),
             Container(
               padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 30),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(255, 133, 131, 131),
@@ -152,7 +193,7 @@ class _RegisterpageState extends State<Registerpage> {
             ),
             Container(
               padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 30),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(255, 133, 131, 131),

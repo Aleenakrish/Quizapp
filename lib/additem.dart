@@ -61,7 +61,9 @@ class _AdditemState extends State<Additem> {
                     'save',
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 )
               ],
             ),
@@ -199,6 +201,25 @@ class _AdditemState extends State<Additem> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
+                        padding: EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(255, 73, 72, 72)),
+                        width: 150,
+                        height: 50,
+                        child: Expanded(
+                            child: TextField(
+                          controller: answer,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Answer",
+                              hintStyle: TextStyle(color: Colors.white)),
+                        )),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
                         height: 50,
                         width: 150,
                         decoration: BoxDecoration(
@@ -213,18 +234,6 @@ class _AdditemState extends State<Additem> {
                               style: TextStyle(color: Colors.white),
                             )),
                       ),
-                      // CupertinoButton(
-                      //   sizeStyle: CupertinoButtonSize.small,
-                      //   color: Colors.blue,
-                      //   borderRadius: BorderRadius.circular(5),
-                      //   child: Text(
-                      //     'Add',
-                      //     style: TextStyle(color: Colors.white),
-                      //   ),
-                      //   onPressed: () {
-                      //     toadd();
-                      //   },
-                      // ),
                       SizedBox(
                         width: 5,
                       )
@@ -259,7 +268,7 @@ class _AdditemState extends State<Additem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${index + 1}). ${todosnapshot['question'].toString()}",
+                            "${index + 1}. ${todosnapshot['question'].toString()}",
                             style: TextStyle(color: Colors.white, fontSize: 17),
                           ),
                           SizedBox(
