@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quizapp/exampage.dart';
+import 'package:quizapp/loginpage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -45,10 +46,11 @@ class _HomepageState extends State<Homepage> {
                               TextButton(
                                   onPressed: () async {
                                     await FirebaseAuth.instance.signOut();
-                                    Navigator.popUntil(
-                                      context,
-                                      (route) => route.isFirst,
-                                    );
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Loginpage(),
+                                        ));
                                   },
                                   child: Text('logout')),
                             ],

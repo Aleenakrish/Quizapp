@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quizapp/addnewitem.dart';
+import 'package:quizapp/resultpage.dart';
 
 class Adminpage extends StatefulWidget {
   const Adminpage({super.key});
@@ -188,7 +189,9 @@ class _AdminpageState extends State<Adminpage> {
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.transparent,
                                 shadowColor: Colors.transparent),
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.push(context, MaterialPageRoute(builder: (context) =>ResultPage() ,));
+                            },
                             child: Text(
                               'Results',
                               style:

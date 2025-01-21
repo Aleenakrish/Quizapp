@@ -13,6 +13,7 @@ class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -25,7 +26,7 @@ class _ResultPageState extends State<ResultPage> {
               padding: EdgeInsets.all(15),
               child: Text(
                 "Result",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22, color: Colors.white),
               ),
             ),
             Container(
@@ -50,9 +51,9 @@ class _ResultPageState extends State<ResultPage> {
                               height: 70,
                               padding: EdgeInsets.only(top: 10),
                               child: Text(
-                                '${index + 1}) ',
+                                '${index + 1}. ',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
+                                    color: Colors.white, fontSize: 20),
                               )),
                           Expanded(
                             child: Container(
@@ -69,18 +70,16 @@ class _ResultPageState extends State<ResultPage> {
                                   Text(
                                     todosnapshot['username'].toString(),
                                     style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        letterSpacing: 1),
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   Text(
                                     todosnapshot["usersAnswers"].toString(),
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],

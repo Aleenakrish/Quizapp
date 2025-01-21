@@ -131,7 +131,6 @@ class _AddnewitemState extends State<Addnewitem> {
                     labelStyle: TextStyle(color: Colors.white)),
               )),
             ),
-            
             SizedBox(
               height: 20,
             ),
@@ -162,9 +161,7 @@ class _AddnewitemState extends State<Addnewitem> {
                                     ////${index }).  "${todosnapshot["question"].toString()}",
                                     " ${index}).${todosnapshot["question"].toString()}",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17),
+                                        color: Colors.white, fontSize: 17),
                                   ),
                                 ),
                                 SizedBox(
@@ -259,7 +256,21 @@ class _AddnewitemState extends State<Addnewitem> {
                                               ],
                                             ),
                                           ),
-                                        )
+                                        ),
+                                        Container(
+                                          height: 50,
+                                          width: 93,
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.only(left: 5),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Text(
+                                            'Answer: ${todosnapshot["answer"].toString()}',
+                                          ),
+                                        ),
                                       ],
                                     )),
                               ],
